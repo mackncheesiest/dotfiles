@@ -1,0 +1,9 @@
+[user]
+	name = Joshua Mack
+	email = mackncheesiest@gmail.com
+[core]
+	autocrlf = true
+	editor = vim
+[alias]
+	st = status
+	co = checkout
