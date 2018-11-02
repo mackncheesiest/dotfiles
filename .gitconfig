@@ -2,7 +2,7 @@
 	name = Joshua Mack
 	email = mackncheesiest@gmail.com
 [core]
-	autocrlf = false 
+	autocrlf = input 
 	editor = vim
 [alias]
 	st = status
