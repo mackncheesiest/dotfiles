@@ -1,3 +1,15 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs 
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+"Use :PlugInstall to reload plugins
+call plug#begin('~/.vim/plugged')
+  Plug 'https://github.com/triglav/vim-visual-increment.git'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+  Plug 'junegunn/fzf.vim'
+call plug#end()
+
 "https://vi.stackexchange.com/questions/10124/what-is-the-difference-between-filetype-plugin-indent-on-and-filetype-indent
 filetype plugin indent on
 
@@ -17,11 +29,5 @@ endif
 
 syntax on
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs 
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-call plug#begin('~/.vim/plugged')
-  Plug 'https://github.com/triglav/vim-visual-increment.git'
-call plug#end()
+"Use Ctrl-P for enabling fuzzy search
+nnoremap <C-p> :Files .<CR>
