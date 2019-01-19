@@ -6,6 +6,7 @@ endif
 "Use :PlugInstall to reload plugins
 call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/triglav/vim-visual-increment.git'
+  Plug 'scrooloose/nerdtree'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -31,3 +32,4 @@ syntax on
 
 "Use Ctrl-P for enabling fuzzy search
 nnoremap <C-p> :Files .<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
