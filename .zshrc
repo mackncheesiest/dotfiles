@@ -19,7 +19,7 @@ compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 
 if [ -d "$HOME/.oh-my-zsh" ]; then
     ZSH=~/.oh-my-zsh
-elif [ -f "/usr/share/oh-my-zsh" ]; then
+elif [ -d "/usr/share/oh-my-zsh" ]; then
     ZSH=/usr/share/oh-my-zsh
 fi
 
@@ -30,6 +30,7 @@ case $HOSTNAME in
   (Josh-Desktop)
     ;;
   (JoshArchBox)
+    export PATH=/opt/cuda/bin:$PATH
     export MAVEN_OPTS='-Xmx8192m -XX:MaxPermSize=512m'
     ;;
 esac
