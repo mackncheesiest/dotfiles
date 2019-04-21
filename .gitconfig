@@ -1,11 +1,14 @@
 [user]
-    name = Joshua Mack
-    email = mackncheesiest@gmail.com
+  name = Joshua Mack
+  email = mackncheesiest@gmail.com
 [core]
-    autocrlf = input 
-    editor = vim
+  autocrlf = input 
+  editor = vim
 [alias]
-    st = status
-    co = checkout
+  st = status
+  co = checkout
 [color]
-    ui = auto
+  ui = auto
+[pager]
+  tag = false
+  branch = false
