@@ -29,6 +29,7 @@ else
 endif
 
 syntax on
+color desert
 
 "Use Ctrl-P for enabling fuzzy search
 nnoremap <C-p> :Files .<CR>
