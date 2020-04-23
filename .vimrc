@@ -31,6 +31,9 @@ endif
 syntax on
 color desert
 
+"Disable statusline to fix issues with tmux buffer
+set laststatus=0
+
 "Use Ctrl-P for enabling fuzzy search
 nnoremap <C-p> :Files .<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
