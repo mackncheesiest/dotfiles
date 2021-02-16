@@ -1,10 +1,13 @@
 # Path to the bash it configuration
 export BASH_IT="${HOME}/.bash_it"
 
+# Path to custom bash it configurations
+export BASH_IT_CUSTOM="${HOME}/.bash_it_custom"
+
 # Lock and Load a custom theme file.
 # Leave empty to disable theming.
 # location /.bash_it/themes/
-export BASH_IT_THEME='demula'
+export BASH_IT_THEME='demula_venv'
 
 # (Advanced): Change this to the name of your remote repo if you
 # cloned bash-it with a remote other than origin such as `bash-it`.
