@@ -11,8 +11,8 @@ else
   unset BOLD; unset NOBOLD
 fi
 
-if $(test -d ~/.dircolors) && $(test -f ~/.dircolors/nord.colors); then
-  eval "$(dircolors ~/.dircolors/nord.colors)"
-fi
+#if $(test -d ~/.dircolors) && $(test -f ~/.dircolors/nord.colors); then
+#  eval "$(dircolors ~/.dircolors/nord.colors)"
+#fi
 
 LANG=en_US.utf8
