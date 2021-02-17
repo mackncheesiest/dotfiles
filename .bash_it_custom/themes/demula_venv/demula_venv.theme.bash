@@ -58,7 +58,7 @@ esac
 function virtualenv_prompt {
   if [[ -n "$VIRTUAL_ENV" ]]; then
     virtualenv=`basename "$VIRTUAL_ENV"`
-    echo -e "using ${D_VIRTUALENV_COLOR}[${virtualenv}] ${D_DEFAULT_COLOR}"
+    echo -e " using ${D_VIRTUALENV_COLOR}[${virtualenv}]${D_DEFAULT_COLOR}"
   fi
 }
 
@@ -66,8 +66,8 @@ mitsuhikos_lastcommandfailed() {
   code=$?
   if [ $code != 0 ];
   then
-    echo "${D_INTERMEDIATE_COLOR}- exited ${D_CMDFAIL_COLOR}\
-$code ${D_DEFAULT_COLOR}"
+    echo "${D_INTERMEDIATE_COLOR} ${D_CMDFAIL_COLOR}\
+($code)${D_DEFAULT_COLOR}"
   fi
 }
 
@@ -83,11 +83,11 @@ prompt() {
 ${RESTORE_CURSOR}\
 ${D_INTERMEDIATE_COLOR}\
 ┌ \
-${D_USER_COLOR}\u ${D_INTERMEDIATE_COLOR}\
-at \
-${D_MACHINE_COLOR}\h ${D_INTERMEDIATE_COLOR}\
-in \
-${D_DIR_COLOR}\w ${D_INTERMEDIATE_COLOR}\
+${D_USER_COLOR}\u${D_INTERMEDIATE_COLOR}\
+ at \
+${D_MACHINE_COLOR}\h${D_INTERMEDIATE_COLOR}\
+ in \
+${D_DIR_COLOR}\w${D_INTERMEDIATE_COLOR}\
 $(virtualenv_prompt)\
 ${LAST_COMMAND_FAILED}
 ${D_INTERMEDIATE_COLOR}\
