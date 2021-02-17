@@ -39,11 +39,10 @@ D_USER_COLOR="${purple}"
 D_SUPERUSER_COLOR="${red}"
 D_MACHINE_COLOR="${cyan}"
 D_DIR_COLOR="${green}"
-D_SCM_COLOR="${yellow}"
-D_BRANCH_COLOR="${yellow}"
 D_CHANGES_COLOR="${white}"
 D_CMDFAIL_COLOR="${red}"
 D_VIMSHELL_COLOR="${cyan}"
+D_VIRTUALENV_COLOR="${yellow}"
 
 # ------------------------------------------------------------------ FUNCTIONS
 case $TERM in
@@ -59,15 +58,7 @@ esac
 function virtualenv_prompt {
   if [[ -n "$VIRTUAL_ENV" ]]; then
     virtualenv=`basename "$VIRTUAL_ENV"`
-    echo -e "[$virtualenv] "
-  fi
-}
-
-is_vim_shell() {
-  if [ ! -z "$VIMRUNTIME" ];
-  then
-    echo "${D_INTERMEDIATE_COLOR}on ${D_VIMSHELL_COLOR}\
-vim shell${D_DEFAULT_COLOR} "
+    echo -e "using ${D_VIRTUALENV_COLOR}[${virtualenv}] ${D_DEFAULT_COLOR}"
   fi
 }
 
@@ -75,26 +66,8 @@ mitsuhikos_lastcommandfailed() {
   code=$?
   if [ $code != 0 ];
   then
-    echo "${D_INTERMEDIATE_COLOR}exited ${D_CMDFAIL_COLOR}\
+    echo "${D_INTERMEDIATE_COLOR}- exited ${D_CMDFAIL_COLOR}\
 $code ${D_DEFAULT_COLOR}"
-  fi
-}
-
-# vcprompt for scm instead of bash_it default
-demula_vcprompt() {
-  if [ ! -z "$VCPROMPT_EXECUTABLE" ];
-  then
-    local D_VCPROMPT_FORMAT="on ${D_SCM_COLOR}%s${D_INTERMEDIATE_COLOR}:\
-${D_BRANCH_COLOR}%b %r ${D_CHANGES_COLOR}%m%u ${D_DEFAULT_COLOR}"
-    $VCPROMPT_EXECUTABLE -f "$D_VCPROMPT_FORMAT"
-  fi
-}
-
-# checks if the plugin is installed before calling battery_charge
-safe_battery_charge() {
-  if _command_exists battery_charge ;
-  then
-    battery_charge
   fi
 }
 
@@ -106,31 +79,22 @@ prompt() {
   local MOVE_CURSOR_RIGHTMOST='\033[500C'
   local MOVE_CURSOR_5_LEFT='\033[5D'
 
-  if [ $(uname) = "Linux" ];
-  then
-    PS1="${TITLEBAR}${SAVE_CURSOR}${MOVE_CURSOR_RIGHTMOST}${MOVE_CURSOR_5_LEFT}
-$(safe_battery_charge)${RESTORE_CURSOR}\
+  PS1="${TITLEBAR}${SAVE_CURSOR}${MOVE_CURSOR_RIGHTMOST}${MOVE_CURSOR_5_LEFT}
+${RESTORE_CURSOR}\
+${D_INTERMEDIATE_COLOR}\
+┌ \
 ${D_USER_COLOR}\u ${D_INTERMEDIATE_COLOR}\
-at ${D_MACHINE_COLOR}\h ${D_INTERMEDIATE_COLOR}\
-in ${D_DIR_COLOR}\w ${D_INTERMEDIATE_COLOR}\
-${LAST_COMMAND_FAILED}\
-$(demula_vcprompt)\
-$(is_vim_shell)
+at \
+${D_MACHINE_COLOR}\h ${D_INTERMEDIATE_COLOR}\
+in \
+${D_DIR_COLOR}\w ${D_INTERMEDIATE_COLOR}\
 $(virtualenv_prompt)\
-${D_INTERMEDIATE_COLOR}$ ${D_DEFAULT_COLOR}"
-  else
-    PS1="${TITLEBAR}
-${D_USER_COLOR}\u ${D_INTERMEDIATE_COLOR}\
-at ${D_MACHINE_COLOR}\h  ${D_INTERMEDIATE_COLOR}\
-in ${D_DIR_COLOR}\w ${D_INTERMEDIATE_COLOR}\
-${LAST_COMMAND_FAILED}\
-$(demula_vcprompt)\
-$(is_vim_shell)\
-$(safe_battery_charge)
-${D_INTERMEDIATE_COLOR}$ ${D_DEFAULT_COLOR}"
-  fi
-
-  PS2="${D_INTERMEDIATE_COLOR}$ ${D_DEFAULT_COLOR}"
+${LAST_COMMAND_FAILED}
+${D_INTERMEDIATE_COLOR}\
+└❯ \
+${D_DEFAULT_COLOR}"
+  
+  PS2="${D_INTERMEDIATE_COLOR}→ ${D_DEFAULT_COLOR}"
 }
 
 # Runs prompt (this bypasses bash_it $PROMPT setting)

@@ -8,6 +8,8 @@ export BASH_IT_CUSTOM="${HOME}/.bash_it_custom"
 # Leave empty to disable theming.
 # location /.bash_it/themes/
 export BASH_IT_THEME='demula_venv'
+# Has a right-aligned clock :eyes:
+#export BASH_IT_THEME='atomic'
 
 # (Advanced): Change this to the name of your remote repo if you
 # cloned bash-it with a remote other than origin such as `bash-it`.
