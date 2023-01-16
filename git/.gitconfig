@@ -14,9 +14,14 @@
   tag = false
   branch = false
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [init]
-	defaultBranch = main
+  defaultBranch = main
+[sendemail]
+  smtpserver = smtp.gmail.com
+  smtpuser = mackncheesiest@gmail.com
+  smtpencryption = tls
+  smtpserverport = 587
