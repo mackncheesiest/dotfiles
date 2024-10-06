@@ -20,8 +20,3 @@
   required = true
 [init]
   defaultBranch = main
-[sendemail]
-  smtpserver = smtp.gmail.com
-  smtpuser = mackncheesiest@gmail.com
-  smtpencryption = tls
-  smtpserverport = 587
